@@ -818,8 +818,10 @@ stage('Build & Archive Package') {
                             // Calculate Key
                             rhel_distros.each { rhel_distro ->
                                 RHELkey = "${rhel_distro}/${RHELarchitecture}"
+                                RHELTarget = "https://adoptium.jfrog.io/artifactory/"
+                                CheckAndUpload(RHELTarget, RHELDistro, RHELarchitecture, '', '', '', RHELTarget, RHELkey, RHELFileName)
                                 }
-                            RHELTarget = "https://adoptium.jfrog.io/artifactory/"
+                            // RHELTarget = "https://adoptium.jfrog.io/artifactory/"
                             // echo "Debug 1001 - RHEL Upload Debugging"
                             // echo "Target = ${RHELTarget}"
                             // echo "Key = ${RHELkey}"
@@ -829,7 +831,6 @@ stage('Build & Archive Package') {
                             // echo "buildArch = ${RHELarchitecture}"
                             // echo "FileName = ${RHELFileName}"
                             // echo "FilePath = ${RHELFilePath}"
-                            CheckAndUpload(RHELTarget, RHELDistro, RHELarchitecture, '', '', '', RHELTarget, RHELkey, RHELFileName)
                         }
                         echo "Preapring For SUSE Upload"
                         def SUSEFileName = ''
@@ -852,8 +853,10 @@ stage('Build & Archive Package') {
                             // Calculate Key
                             suse_distros.each { suse_distro ->
                                 SUSEkey = "${suse_distro}/${SUSEarchitecture}"
+                                SUSETarget = "https://adoptium.jfrog.io/artifactory/"
+                                CheckAndUpload(SUSETarget, SUSEDistro, SUSEarchitecture, '', '', '', SUSETarget, SUSEkey, SUSEFileName)
                                 }
-                            SUSETarget = "https://adoptium.jfrog.io/artifactory/"
+                            // SUSETarget = "https://adoptium.jfrog.io/artifactory/"
                             // echo "Debug 1003 - SUSE Upload Debugging"
                             // echo "Target = ${SUSETarget}"
                             // echo "Key = ${SUSEkey}"
@@ -863,7 +866,6 @@ stage('Build & Archive Package') {
                             // echo "buildArch = ${SUSEarchitecture}"
                             // echo "FileName = ${SUSEFileName}"
                             // echo "FilePath = ${SUSEFilePath}"
-                            CheckAndUpload(SUSETarget, SUSEDistro, SUSEarchitecture, '', '', '', SUSETarget, SUSEkey, SUSEFileName)
                         }
                 } // End Of Linux Distro
               }
